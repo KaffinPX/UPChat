@@ -6,4 +6,4 @@
 * Web2-like DApp.
 
 ## Usage
-Setup website and move repository to main web directory.
+Just visit https://kaffinpx.github.io/UPChat/ or setup website and move repository to main web directory.
