@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UPChat</title>
+
+    <link rel="stylesheet" href="src/bulma/bulma.css">
+    <link rel="stylesheet" href="src/bulma/pageloader.css">
+    <link rel="stylesheet" href="https://unpkg.com/bulma-prefers-dark">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+      ::-webkit-scrollbar {
+          display: none;
+      }
+    </style>
+    <script src="./src/bulma/toast.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tweetnacl@1.0.3/nacl.min.js"></script>
+
+    <script src="./src/polyfill/buffer.js"></script>
+    <script src="./src/app.js"></script>
+  </head>
+  <body>
+    <div id="loader" class="pageloader is-black is-active">
+      <span class="title" id="loadingDesc">UPChat</span>
+      <span class="title" style="font-size: smaller; top: 53.5%;" id="loadingStatus">Please accept connection request.</span>
+    </div>
+
+    <div class="container">
+      <div class="columns is-mobile is-centered">
+        <div class="column">
+          <div class="box" style="min-height: 640px !important;">
+            <span class="title">UPChat</span>
+            
+            <div class="tabs is-centered">
+              <ul>
+                <li id="openActiveChats" class="is-active">
+                  <a>
+                    <span>Active Chats</span>
+                  </a>
+                </li>
+                <li id="openClosedChats">
+                  <a>
+                    <span>Closed Chats</span>
+                  </a>
+                </li>
+                <li>
+                  <button class="button" id="openRequestModal">
+                    <span>Send request</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            
+            <div id="activeChats">
+              <button id="refreshActiveChats" class="button" style="float: right;">Refresh</button>
+              <br><br>
+              <div id="friendList" class="container"></div>
+            </div>
+
+            <div id="closedChats" style="display: none;">
+              <button id="refreshClosedChats" class="button" style="float: right;">Refresh</button>
+              <br><br>
+              <div id="closedFriendList" class="container"></div>
+            </div>
+
+            <div id="requestModal" class="modal">
+              <div id="closeRequestModal" class="modal-background" style="background-color: rgb(45,45,45); opacity: 70%;"></div>
+              <div class="box modal-content">
+                <span class="subtitle">Send friend request</span>
+                <br><br>
+                <input id="sendRequestAddr" class="input" placeholder="Address">
+                <br><br>
+                <button id="sendRequestBtn" class="button">Send</button>
+              </div>
+            </div>            
+
+            <div id="chatBox" class="box" style="display: none;">
+              <span id="chatTitle" class="subtitle">Chat w ___</span>
+              <button id="closeChat" class="button" style="float: right;">Close Chat</button>
+              <button id="refreshChat" class="button" style="float: right;">Refresh</button>
+              <br><br>
+              <div id="messages" style="height: 360px; overflow-Y: scroll;"></div>
+              <div class="field has-addons">
+                <div class="control is-expanded">
+                  <input id="message" class="input" name="userInput" type="text" placeholder="Type your message" />
+                </div>
+                <div class="control">
+                  <button id="sendMessage" class="button is-info">
+                    Send
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
